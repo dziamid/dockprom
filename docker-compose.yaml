@@ -3,8 +3,8 @@ networks:
     driver: bridge
 
 volumes:
-    prometheus_data: {}
-    grafana_data: {}
+  prometheus_data: { }
+  grafana_data: { }
 
 services:
 
@@ -27,7 +27,7 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
 
   alertmanager:
     image: prom/alertmanager:v0.27.0
@@ -43,7 +43,7 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
 
   nodeexporter:
     image: prom/node-exporter:v1.8.1
@@ -63,7 +63,7 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.49.1
@@ -83,7 +83,7 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
 
   grafana:
     image: grafana/grafana:11.0.0
@@ -102,7 +102,7 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
 
   pushgateway:
     image: prom/pushgateway:v1.9.0
@@ -113,4 +113,5 @@ services:
     networks:
       - monitor-net
     labels:
-      org.label-schema.group: "monitoring"
+      - "org.label-schema.group=monitoring"
+
